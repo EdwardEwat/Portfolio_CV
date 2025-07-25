@@ -19,12 +19,18 @@ return new class extends Migration
             $table->date('ngayKetThuc')->nullable();
             $table->string('gitHub', 100)->nullable();
             $table->integer('soThanhVien')->default(1)->min(1);
+            $table->string('viTri', 100)->nullable();
             $table->string('moTa', 255)->nullable();
-            $table->enum('trangThai', ['Dang thuc hien', 'Da hoan thanh', 'Da huy'])->default('Dang thuc hien');
+            $table->enum('trangThai', ['Done', 'On Process', 'Canceled'])->default('Done');
             $table->string('frontend', 255)->nullable();
             $table->string('backend', 255)->nullable();
+            $table->string('mobile', 255)->nullable();
+            $table->string('library',255)->nullable();
             $table->string('database', 255)->nullable();
             $table->timestamps();
+
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
         });
     }
 

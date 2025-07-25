@@ -19,7 +19,11 @@ class diemSoController extends Controller
         return response()->json($diemSo);
     }
     public function getDiemSoByHocKy($hocKy){
-        $diemSo = DB::table('diem_so')->where('hocKy', $hocKy)->get();
+        $diemSo = DB::table('diem_so')
+            ->join('mon_hoc', 'diem_so.maMonHoc', '=', 'mon_hoc.maMonHoc')
+            ->where('diem_so.hocKy', $hocKy)
+            ->select('mon_hoc.tenMonHoc', 'mon_hoc.soTinChi', 'diem_so.diemSo', 'diem_so.diemChu')
+            ->get();
         return response()->json($diemSo);
     }
 }

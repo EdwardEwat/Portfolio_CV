@@ -17,10 +17,13 @@ return new class extends Migration
             $table->string('tenBangCap', 100);
             $table->date('ngayCap');
             $table->date('ngayHetHan')->nullable();
-            $table->enum('loaiBangCap', ['Chung chi', 'Bang tot nghiep'])->default('Bang tot nghiep');
+            $table->enum('loaiBangCap', ['Certificate', 'Degree'])->default('Degree');
             $table->string('noiCap', 255)->nullable();
             $table->string('moTa', 255)->nullable();
             $table->timestamps();
+
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 
