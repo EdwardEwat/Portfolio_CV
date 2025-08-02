@@ -7,7 +7,7 @@ export const fetchDuAn = createAsyncThunk(
   "duAn/fetchDuAn",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${API_URL}:${API_PORT}/du-an-cua-toi`);
+      const response = await fetch(`${API_URL}/du-an-cua-toi`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

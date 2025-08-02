@@ -7,7 +7,7 @@ export const getDiemSo = createAsyncThunk(
   "diemSo/getDiemSo",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch(`${API_URL}:${API_PORT}/diem-so`, {
+      const response = await fetch(`${API_URL}/diem-so`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -28,15 +28,12 @@ export const getDiemSo1Ky = createAsyncThunk(
   "diemSo/getDiemSo1Ky",
   async (hocKy, { rejectWithValue }) => {
     try {
-      const response = await fetch(
-        `${API_URL}:${API_PORT}/diem-so/hoc-ky/${hocKy}}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${API_URL}/diem-so/hoc-ky/${hocKy}}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

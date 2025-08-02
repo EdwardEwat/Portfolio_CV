@@ -2,12 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
-const API_PORT = import.meta.env.VITE_API_PORT;
 
 export const getThongTin = createAsyncThunk(
   "thongTin/getThongTin",
   async () => {
-    const res = await axios.get(`${API_URL}:${API_PORT}/thong-tin`);
+    const res = await axios.get(`${API_URL}/thong-tin`);
     return res.data;
   }
 );

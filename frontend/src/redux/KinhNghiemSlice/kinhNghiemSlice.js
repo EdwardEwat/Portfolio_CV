@@ -8,7 +8,7 @@ export const fetchCompanies = createAsyncThunk(
   "experience/fetchCompanies",
   async () => {
     try {
-      const response = await axios.get(`${API_URL}:${API_PORT}/cong-ty`);
+      const response = await axios.get(`${API_URL}/cong-ty`);
       return response.data;
     } catch (error) {
       throw new Error(
@@ -20,7 +20,7 @@ export const fetchCompanies = createAsyncThunk(
 
 export const fetchJobs = createAsyncThunk("experience/fetchJobs", async () => {
   try {
-    const response = await axios.get(`${API_URL}:${API_PORT}/cong-viec`);
+    const response = await axios.get(`${API_URL}/cong-viec`);
     return response.data;
   } catch (error) {
     throw new Error(`Failed to fetch jobs: ` + error.message);
@@ -31,7 +31,7 @@ export const fetchJobProjects = createAsyncThunk(
   "experience/fetchJobProjects",
   async () => {
     try {
-      const response = await axios.get(`${API_URL}:${API_PORT}/du-an-cong-ty`);
+      const response = await axios.get(`${API_URL}/du-an-cong-ty`);
       return response.data;
     } catch (error) {
       throw new Error(`Failed to fetch job projects: ` + error.message);
