@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+
+.ant-collapse-header-text,
+.ant-collapse-expand-icon,
+.ant-table-content,
+table,
+.ant-table-thead > tr > th,
+.ant-collapse .ant-collapse-conten,
+:where(.css-dev-only-do-not-override-7t2xvq).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th,
+.ant-table-column-sorters .ant-tooltip-open,
+:where(.css-dev-only-do-not-override-7t2xvq).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > td
+  .ant-table-cell
+  .ant-table-cell-row-hover,
+:where(.css-dev-only-do-not-override-7t2xvq).ant-table-wrapper
+  .ant-table-tbody
+  .ant-table-row
+  > .ant-table-cell-row-hover,
+.ant-table-cell .ant-table-column-sort .ant-table-cell-row-hover {
+  @apply text-black dark:text-white dark:bg-black dark:hover:bg-black dark:hover:text-white;
+}
+
+.ant-table-cell .ant-table-cell-row-hover,
+.ant-table-cell .ant-table-column-sort .ant-table-cell-row-hover {
+  @apply dark:hover:bg-black dark:hover:text-white;
+}
+
+.ant-table-cell:not(.ant-table-cell-row-hover),
+.ant-table-cell .ant-table-column-sort:not(.ant-table-cell-row-hover),
+:where(.css-dev-only-do-not-override-7t2xvq).ant-collapse .ant-collapse-content,
+:where(.css-dev-only-do-not-override-7t2xvq).ant-collapse:hover
+  > .ant-collapse-header-text
+  .ant-table-cell
+  .ant-table-column-has-sorters,
+.ant-table-cell
+  .ant-table-column-sort
+  .ant-table-column-has-sorters
+  > .ant-table-column-sorters
+  .ant-table-column-sorter-full
+  > .ant-table-column-title:hover,
+.ant-table-column-sorter .ant-table-column-sorter-full {
+  @apply text-black dark:text-white dark:bg-black;
+}

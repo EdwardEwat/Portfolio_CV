@@ -1,0 +1,146 @@
+/* Sidebar.css */
+.sidebar {
+  height: 100vh;
+  /* Đã sử dụng var cho background-primary */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-primary, white); /* Thay thế */
+  transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Thêm transition cho background và color */
+  z-index: 999;
+  border-right: 1px solid var(--border-color, white); /* Thay thế */
+}
+
+.sidebar.collapsed {
+  width: 100px;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  margin-top: 23px;
+  text-align: center;
+}
+
+.nav {
+  width: 100%;
+  padding: 0;
+}
+
+.nav-item {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.nav-item .tab-link {
+  /* color: #b3b3b3; */
+  color: var(--text-secondary, #b3b3b3); /* Thay thế */
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-item .tab-link.active {
+  /* color: white; */
+  color: var(--text-primary, white); /* Thay thế */
+  /* border-right:5px solid white ; */
+  border-right: 5px solid var(--accent-color, white); /* Thay thế, có thể dùng --text-primary hoặc --border-color */
+}
+
+.nav-item .tab-link:hover {
+  /* color: white; */
+  color: var(--text-primary, white); /* Thay thế */
+}
+
+.nav-item .tab-link .icon {
+  margin-right: 10px;
+  font-size: 1.3rem;
+  /* Màu của icon sẽ được kế thừa từ color của .tab-link, 
+     hoặc bạn có thể đặt var riêng nếu muốn màu khác */
+}
+
+.toggle-button {
+  position: absolute;
+  /* right: center; -> right không nhận giá trị center, có thể là 50% transformX(-50%) hoặc đặt left/right cụ thể */
+  /* Hoặc để đơn giản, nếu muốn ở giữa ngang trong sidebar khi thu gọn: */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  /* background-color: #1a1a1a; -> Nên bỏ nếu muốn nút này trong suốt hoặc dùng biến */
+  background-color: transparent; /* Hoặc var(--background-secondary) tùy thiết kế */
+  cursor: pointer;
+  z-index: 1000;
+  padding: 5px; /* Thêm padding để dễ bấm */
+  border-radius: 4px; /* Bo góc nhẹ */
+}
+
+/* Dòng này bị lặp lại, đã style ở trên */
+/* .nav-item .tab-link { ... } */
+/* .nav-item .tab-link.active { ... } */
+/* .nav-item .tab-link:hover { ... } */
+
+/* Notifications Drawer */
+.notifications-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Hoặc -350px nếu width cố định */
+  width: 350px;
+  height: 100%;
+  /* background: #1e1e2f; */
+  background: var(--background-secondary, #1e1e2f); /* Thay thế */
+  /* color: #fff; */
+  color: var(--text-primary, #fff); /* Thay thế */
+  z-index: 1000;
+  transition: right 0.3s ease-in-out, background-color 0.3s ease,
+    color 0.3s ease; /* Thêm transition */
+  border-left: 1px solid var(--border-color, #444444); /* Thêm border để phân cách */
+}
+
+.notifications-drawer.open {
+  right: 0;
+}
+
+.toggle-button svg {
+  /* color: white; */
+  font-size: 1.2rem; /* Điều chỉnh kích thước icon nếu cần */
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+.NotificationsPage {
+  /* Đây là class cho button, không phải page */
+  width: 100%;
+  border: none;
+  text-align: left; /* Căn chỉnh text và icon của button cho giống <a> */
+  padding: 0; /* Bỏ padding của button để ăn theo .tab-link */
+}
+
+.main-content {
+  flex-grow: 1;
+  transition: margin-left 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Thêm transition */
+  margin-left: 250px;
+  padding: 20px; /* Thêm padding cho nội dung chính */
+  height: 100vh; /* Đảm bảo main-content cũng có chiều cao */
+  overflow-y: auto; /* Cho phép cuộn nếu nội dung dài */
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 100px;
+}
+
+/* .content-area không thấy được sử dụng trong JSX, nhưng nếu có thì cũng nên dùng var */
+.content-area {
+  padding: 20px;
+}
+
+/* Xóa dấu ngoặc kép bị thừa ở cuối file */
+/* } */

@@ -23,4 +23,8 @@ class congViecController extends Controller
             ->where('ngayKetThuc', '>=', $date)->get();
         return response()->json($congViec);
     }
+    public function getCongViecByCongTy($congTyId){
+        $congViec = DB::table('cong_viec')->where('congTyId', $congTyId)->get();
+        return response()->json($congViec);
+    }
 }

@@ -11,7 +11,10 @@ class diemSoController extends Controller
         return response()->json($diemSo);
     }
     public function getAllDiemSo(){
-        $diemSo = DB::table('diem_so')->get();
+        $diemSo = DB::table('diem_so')
+            ->join('mon_hoc', 'diem_so.maMonHoc', '=', 'mon_hoc.maMonHoc')
+            ->select('mon_hoc.tenMonHoc', 'mon_hoc.soTinChi', 'diem_so.diemSo', 'diem_so.diemChu', 'diem_so.hocKy')
+            ->get();
         return response()->json($diemSo);
     }
     public function getDiemSoByMonHoc($monHocId){

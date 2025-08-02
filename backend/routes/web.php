@@ -14,6 +14,7 @@ use App\Http\Controllers\diemSoController;
 Route::get('/thong-tin', [thongTinController::class, 'getData']);
 Route::get('/email', [thongTinController::class, 'getEmail']);
 Route::get('/thong-tin/{id}', [thongTinController::class, 'getById']);
+Route::post('/send-mail', [thongTinController::class, 'sendMail']);
 
 // BangCap
 Route::get('/bang-cap', [bangCapController::class, 'getAllBangCap']);
@@ -32,9 +33,10 @@ Route::get('/cong-viec', [congViecController::class, 'getAllCongViec']);
 Route::get('/cong-viec/{id}', [congViecController::class, 'getCongViecById']);
 Route::get('/cong-viec/name/{name}', [congViecController::class, 'getCongViecByName']);
 Route::get('/cong-viec/date/{date}', [congViecController::class, 'getCongViecByDate']);
+Route::get('/cong-viec/cong-ty/{congTyId}', [congViecController::class, 'getCongViecByCongTy']);
 
 // DuAnCuaToi
-Route::get('/du-an-cua-toi', [duAnCuaToiController::class, 'getAllDuAnCuaToi']);
+Route::get('/du-an-cua-toi', [duAnCuaToiController::class, 'getAllDuAn']);
 Route::get('/du-an-cua-toi/{id}', [duAnCuaToiController::class, 'getDuAnById']);
 Route::get('/du-an-cua-toi/name/{name}', [duAnCuaToiController::class, 'getDuAnByName']);
 Route::get('/du-an-cua-toi/date/{date}', [duAnCuaToiController::class, 'getDuAnByDate']);
