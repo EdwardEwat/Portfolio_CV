@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: backend-API
+    env: php
+    region: oregon # Chọn khu vực gần bạn nhất (ví dụ: oregon, frankfurt)
+    rootDir: backend # Rất quan trọng: Chỉ định thư mục chứa project Laravel
+    plan: free # Sử dụng gói miễn phí
+
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan key:generate
+      php artisan cache:clear
+      php artisan config:cache
+      php artisan migrate --force
+
+    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_ENV
+        value: "production"
+      - key: APP_URL
+        value: https://your-app-name.onrender.com # Thay thế bằng URL của Render
+      - key: DB_CONNECTION
+        value: mysql # hoặc postgres
+      - key: DB_HOST
+        fromDatabase: # Tự động lấy từ database bạn đã tạo trên Render
+          name: your-database-name
+          property: host
+      - key: DB_DATABASE
+        fromDatabase:
+          name: your-database-name
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: your-database-name
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: your-database-name
+          property: password
+      # Các biến môi trường khác bạn có thể thêm vào đây
+      - key: YOUR_CUSTOM_KEY
+        value: your_value
