@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingPage from "../loadingPage/loadingPage";
-import { getDiemSo } from "../../redux/diemSoSlice/diemSoSlice";
+import { getDiemSo } from "../../redux/DiemSoSlice/diemSoSlice.js";
 import { Collapse, Table } from "antd";
 import "../education/education.css";
 

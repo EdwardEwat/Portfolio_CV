@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import hinhDaiDien from "../../assets/2873.jpg";
-import { getThongTin } from "../../redux/ThongTinSlice/thongTinSlice";
+import { getThongTin } from "../../redux/ThongTinSlice/thongTinSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import MailDialog from "../../components/dialog/mailDialog/mailDialog.jsx";
 import LoadingPage from "../loadingPage/loadingPage.jsx";

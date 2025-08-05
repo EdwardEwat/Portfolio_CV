@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { fetchDuAn } from "../../redux/DuAnSlice/duAnSlice";
+import { fetchDuAn } from "../../redux/DuAnSlice/duAnSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Collapse } from "antd";
 import LoadingPage from "../loadingPage/loadingPage";
