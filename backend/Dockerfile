@@ -16,7 +16,6 @@ RUN apk update && apk upgrade --no-cache && apk add --no-cache \
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install xml
 RUN docker-php-ext-install ctype
 
