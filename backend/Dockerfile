@@ -1,21 +1,21 @@
 # Sử dụng base image là PHP có cài sẵn FPM
 FROM php:8.2-fpm-alpine
 
-# Cài đặt các gói phụ thuộc và PHP extensions trong một lệnh RUN duy nhất
-RUN apk update && apk add --no-cache \
+# Cập nhật danh sách gói và cài đặt các gói hệ thống cần thiết
+RUN apk update && apk upgrade --no-cache && apk add --no-cache \
     nginx \
     curl \
     git \
     supervisor \
     mariadb-client \
     mariadb-dev \
-    postgresql-dev \
     libxml2-dev \
-    oniguruma-dev \
-    && docker-php-ext-install -j$(nproc) \
+    oniguruma-dev
+
+# Cài đặt các PHP extensions. Tách riêng để dễ debug hơn
+RUN docker-php-ext-install -j$(nproc) \
     pdo \
     pdo_mysql \
-    pdo_pgsql \
     mbstring \
     tokenizer \
     xml \
