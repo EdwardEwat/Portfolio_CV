@@ -2,7 +2,7 @@
 FROM php:8.2-fpm-alpine
 
 # Cài đặt các gói phụ thuộc và PHP extensions trong một lệnh RUN duy nhất
-RUN apk add --no-cache \
+RUN apk update && apk add --no-cache \
     nginx \
     curl \
     git \
