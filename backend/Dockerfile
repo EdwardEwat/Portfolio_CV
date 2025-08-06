@@ -12,14 +12,13 @@ RUN apk update && apk upgrade --no-cache && apk add --no-cache \
     libxml2-dev \
     oniguruma-dev
 
-# Cài đặt các PHP extensions. Tách riêng để dễ debug hơn
-RUN docker-php-ext-install -j$(nproc) \
-    pdo \
-    pdo_mysql \
-    mbstring \
-    tokenizer \
-    xml \
-    ctype
+# Tách riêng các lệnh cài đặt PHP extensions để dễ debug
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install tokenizer
+RUN docker-php-ext-install xml
+RUN docker-php-ext-install ctype
 
 # Cài đặt Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
