@@ -45,4 +45,4 @@ COPY .env.example .env
 EXPOSE 8000
 
 # Chạy Nginx và PHP-FPM khi container khởi động
-CMD ["sh", "-c", "nginx && php-fpm"]
+CMD ["sh", "-c", "cat /etc/nginx/nginx.conf && nginx -t && nginx -g 'daemon off;'"]
