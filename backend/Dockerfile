@@ -1,19 +1,18 @@
 # Sử dụng base image là PHP có cài sẵn FPM
 FROM php:8.2-fpm-alpine
 
-# Cài đặt các extension PHP cần thiết cho Laravel
+# Cài đặt các gói phụ thuộc và PHP extensions trong một lệnh RUN duy nhất
 RUN apk add --no-cache \
     nginx \
     curl \
     git \
     supervisor \
-    postgresql-dev \
-    mysql-client \
+    mariadb-client \
     mariadb-dev \
+    postgresql-dev \
+    libxml2-dev \
     oniguruma-dev \
-    libxml2-dev
-
-RUN docker-php-ext-install -j$(nproc) \
+    && docker-php-ext-install -j$(nproc) \
     pdo \
     pdo_mysql \
     pdo_pgsql \
@@ -37,15 +36,15 @@ RUN composer install --no-dev --optimize-autoloader
 # Sao chép cấu hình Nginx
 COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
-# Cấp quyền cho thư mục storage
-RUN chmod -R 775 storage
+# Cấp quyền cho thư mục storage và cache để ứng dụng có thể ghi file
 RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage
 
 # Cấu hình file .env
 COPY .env.example .env
 
-# Expose port 8000
+# Expose port 8000 để Nginx lắng nghe
 EXPOSE 8000
 
 # Chạy Nginx và PHP-FPM khi container khởi động
-CMD ["sh", "-c", "nginx -g 'daemon off;' && php-fpm"]
+CMD ["sh", "-c", "nginx && php-fpm"]
